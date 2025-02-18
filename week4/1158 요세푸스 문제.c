@@ -13,11 +13,10 @@ node* insert(int d,node *pre){
     return tmp;
 }
 
-int delete(node *pre, node *now){
-    int data = now->data;
+node* delete(node *pre, node *now){
     pre->link = now->link;
-    //free(now);
-    return data;
+    free(now);
+    return pre;
 }
 
 int main(){
@@ -40,7 +39,8 @@ int main(){
             pre = now;
             now = now->link;
         }
-        printf("%d",delete(pre,now));
+        printf("%d",now->data);
+        now = delete(pre,now);
         if (cnt < n - 1) {printf(", ");}
     }
     printf(">");
