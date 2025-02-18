@@ -1,39 +1,45 @@
 #include <stdio.h>
 #include <string.h>
-//실패했는데 일단 제출
+typedef struct node{
+    int data;
+    struct node *link;
+}node;
+
+typedef struct queue{
+    node *front, *rear;
+}queue;
+
+void init(queue *q){q->front = q->rear = NULL;}
+
+void insert(queue *q,int d){
+    node* temp = (node *)malloc(sizeof(node)); 
+    temp->data = d; 
+    temp->link = NULL;
+
+    if(is_empty(q)) { // 큐가 비어있는 경우
+        q->front = temp; 
+        q->rear = temp;
+    }
+    else { // 큐가 비어있지 않는 경우
+        q->rear->link = temp; 
+        q->rear = temp; 
+    }
+}
+
+void remove(queue *q,int d){
+
+}
+
 
 int main(){
-    int n,m,num;
-    int page[101] = {0};
-    int gap[101] = {0};
-    int ans = 0;
+    int n,k;
+    scanf("%d %d",n,k);
 
-    scanf("%d %d",&n,&m);
-    while (scanf("%d", &num) == 1) {  
-        page[num] = 1; 
+    queue q;
+    init(&q);
+    for (int i =1;i>n+1;i++){
+
     }
 
-    int idx = (page[1]) ? 1:0;
-    gap[0] = 1;
-    for(int i=2;i<n+1;i++){
-        if(page[i]!=page[i-1]){
-            idx++;
-        }
-        gap[idx]++;
-    }
-    idx = (idx%2==0) ? idx:idx-1;
-
-    for(int i=1;i<idx;i+=2){
-        if (gap[i]<3){ //2개 이하일때만 이득
-            gap[i+1] += gap[i] + gap[i-1];
-            gap[i-1]=0;
-        }
-    }
-    
-    for(int i=0;i<idx+1;i+=2){
-        if (gap[i]) {ans += 5 + gap[i]*2;}
-    }
-
-    printf("%d",ans);
     return 0;
 }
