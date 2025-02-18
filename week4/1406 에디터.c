@@ -32,7 +32,7 @@ node* delete(node* now) {
     next->left = pre;
 
     free(now);
-    return pre;
+    return next;
 }
 
 void print_list(node* head) {
@@ -74,16 +74,12 @@ int main() {
         scanf(" %c", &cmd);
 
         if (cmd == 'L') {
-            print_list(head);
             if (cursor->left != head) {cursor = cursor->left;}
         } else if (cmd == 'D') {
-            print_list(head);
             if (cursor != tail) {cursor = cursor->right;}
         } else if (cmd == 'B') {
-            print_list(head);
-            if (cursor != head) { cursor = delete(cursor->left);}
+            if (cursor->left != head) { cursor = delete(cursor->left);}
         } else if (cmd == 'P') {
-            print_list(head);
             char x;
             scanf(" %c", &x);
             append(x, cursor);
