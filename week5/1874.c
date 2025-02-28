@@ -19,9 +19,9 @@ int main() {
     stack = (int*)malloc(sizeof(int) * n);
     op = (char*)malloc(sizeof(char) * (n * 2));
 
-    int num = 1; // ½ºÅÃ¿¡ µé¾î°¥ ¿ø¼Ò
-    int idx = 0; // arr ÀÎµ¦½º
-    int op_idx = 0; // ¿¬»êÀÚ ÀÎµ¦½º
+    int num = 1; // ìŠ¤íƒì— ë“¤ì–´ê°ˆ ì›ì†Œ
+    int idx = 0; // arr ì¸ë±ìŠ¤
+    int op_idx = 0; // ì—°ì‚°ì ì¸ë±ìŠ¤
 
     while (idx < n) {
         // push
@@ -35,7 +35,7 @@ int main() {
             op[op_idx++] = '-';
             idx++;
         }
-        // ¹è¿­ ¸¸µé±â ºÒ°¡´É
+        // ë°°ì—´ ë§Œë“¤ê¸° ë¶ˆê°€ëŠ¥
         else {
             printf("NO\n");
             free(arr);
